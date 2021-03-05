@@ -1,0 +1,10 @@
+{% extends 'chat/base.html' %}
+{% block title %} MyChatApp | {{ block.super }}{% endblock %}
+{% block content %}
+<h2 class="text-center ">Create {{request.user}} Profile</h2>
+ <form class="container table-bordered" method="post" action="{% url 'profile-list' %}" enctype="multipart/form-data">{% csrf_token %}
+  {{form.as_p  }}
+ <input type="submit" value="create" class="btn btn-success">
+ </form>
+{% endblock %}
+

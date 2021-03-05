@@ -1,0 +1,10 @@
+{% extends 'chat/base.html' %}
+{% block title %} MyChatApp | {{ block.super }}{% endblock %}
+{% block content %}
+<h2 class="text-center ">Delete {{object.user.username}} Profile</h2>
+ <form class="container table-bordered" method="post" >{% csrf_token %}
+ <p>Are you sure you want to delete the {{object  }} object</p>
+ <input class="btn btn-danger" type="submit" value="Confirm" name="deletion">
+ <a href="{{ object.get_absolute_url }}" class="btn btn-dark">Cancel</a>
+ </form>
+{% endblock %}

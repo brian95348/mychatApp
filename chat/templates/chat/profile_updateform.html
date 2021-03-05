@@ -1,0 +1,10 @@
+{% extends 'chat/base.html' %}
+{% block title %} Service Provider | {{ block.super }}{% endblock %}
+{% block content %}
+<h2 class="text-center ">Edit {{object.user.username}} Profile</h2>
+ <form class="container table-bordered" method="post" action="{% url 'profile-update' username=object.username %}" enctype="multipart/form-data">{% csrf_token %}
+  {{form.as_p  }}
+ <input type="submit" value="update" class="btn btn-success">
+ <a href="{{object.get_absolute_url}}"><button class="btn btn-dark">Cancel</button></a>
+ </form>
+{% endblock %}

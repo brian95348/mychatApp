@@ -1,0 +1,6 @@
+django
+django-guardian
+channels_redis
+psycopg2
+pillow
+selenium

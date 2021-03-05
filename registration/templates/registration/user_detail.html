@@ -1,0 +1,15 @@
+{% extends 'registration/base.html'%}
+{% load static%}
+{%block content%}
+
+<div class="container table-bordered text-center" style="width: 50%;">
+  <h2 class="text-center ">{{request.user}}</h2>
+  <p><img src="{% static '12.png'%}" alt=""></p>
+
+  <a href="{% url 'password_change' %}" ><button class="btn btn-default">Password Change</button></a>
+  <a href="{% url 'password_reset' %}" ><button class="btn btn-default">Password Reset</button></a>
+  <a href="{% url 'password_reset' %}" ><button class="btn btn-default">Delete My Account</button></a>
+    <h6></h6>
+</div>
+
+{% endblock%}

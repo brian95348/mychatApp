@@ -1,0 +1,13 @@
+{% extends 'registration/base.html' %}
+{% block content %}
+<div class="container table-bordered" style="width: 50%;">
+<h2 class="text-center ">MyChatApp SignUp</h2>
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="submit" class="btn btn-success"/>
+    <a href="{% url 'index' %}" class="btn btn-dark">Cancel</a>
+</form>
+<h6></h6>
+</div>
+{% endblock %}

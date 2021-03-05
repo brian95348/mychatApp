@@ -1,0 +1,17 @@
+{% extends 'registration/base.html'%}
+{% load static%}
+{%block content%}
+
+<div class="container table-bordered text-center" style="width: 50%;">
+  <h2 class="text-center ">MyChatApp Login</h2>
+  <p><img src="{% static '12.png'%}" alt=""></p>
+  <form action="" method="post">{% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" name="" value="Login" class="btn btn-default">
+    
+  </form>
+  <a href="{% url 'user-register' %}" ><button class="btn btn-default">Don't Have an account? Sign Up</button></a>
+  <h6></h6>
+</div>
+
+{% endblock%}
