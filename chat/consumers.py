@@ -36,14 +36,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def receive(self,text_data):
         text_data_obj = json.loads(text_data)
-        connected = text_data_obj.get('connected',None)
         delete = text_data_obj.get('delete',None)
-        if connected:
-            await self.channel_layer.group_send(self.group_name, ({
-                'type':'on.connect',
-                'connected_user':connected,
-            }))
-        elif delete:
+        if delete:
             self.selected_messages = text_data_obj['selected_messages']
             await self.delete_message()
             self.receiver = text_data_obj['receiver']

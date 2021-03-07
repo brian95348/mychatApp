@@ -26,7 +26,8 @@ class TestProjectPage(StaticLiveServerTestCase):
         cls.selenium.quit()
         
         super().tearDownClass()
- 
+
+     
     def login(self):
         self.selenium.get('%s%s' % (self.live_server_url, '/accounts/login/'))
         username_input = self.selenium.find_element_by_name("username")
@@ -43,16 +44,3 @@ class TestProjectPage(StaticLiveServerTestCase):
         #Viewing User2 Profile object
         self.selenium.get(self.live_server_url+reverse('profile-detail',kwargs={'username':self.User2.username}))
         self.login()
-
-    def test_profile_delete(self):
-        self.selenium.get(self.live_server_url+reverse('profile-delete',kwargs={'username':self.User1.username}))
-        self.login()
-        #User Deletes own Profile object
-        #self.selenium.find_element_by_name('deletion').click()
-
-    def test_profile_update(self):
-        self.selenium.get(self.live_server_url+reverse('profile-update',kwargs={'username':self.User1.username}))
-        self.login()
-        #User POSTs updated Profile data
-        #self.selenium.find_element_by_tag_name('input').click()
-                 

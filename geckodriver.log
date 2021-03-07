@@ -346,3 +346,56 @@ JavaScript error: http://localhost:60093/static/js/bootstrap.min.js, line 6: Typ
 JavaScript error: http://localhost:60093/static/js/bootstrap.min.js, line 6: TypeError: t is undefined
 JavaScript error: http://localhost:60093/static/js/bootstrap.min.js, line 6: TypeError: t is undefined
 1614892963646	Marionette	INFO	Stopped listening on port 35253
+1614940703824	geckodriver	INFO	Listening on 127.0.0.1:55033
+1614940704901	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileDtiDCf"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1614940752825	Marionette	INFO	Listening on port 37781
+1614940753693	Marionette	WARN	TLS certificate errors will be ignored for this session
+1614940788919	Marionette	INFO	Stopped listening on port 37781
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1614940873470	geckodriver	INFO	Listening on 127.0.0.1:51767
+1614940874223	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilebKz5Xw"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1614940917409	Marionette	INFO	Listening on port 34017
+1614940918043	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:46845/static/js/bootstrap.min.js, line 6: TypeError: t is undefined
+1614940959168	Marionette	INFO	Stopped listening on port 34017
+1614941100369	geckodriver	INFO	Listening on 127.0.0.1:38323
+1614941100386	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileuveuQi"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 726))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 376))
+1614941119227	Marionette	INFO	Listening on port 43429
+1614941119282	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:46877/static/js/bootstrap.min.js, line 6: TypeError: t is undefined
+JavaScript error: http://localhost:46877/static/js/bootstrap.min.js, line 6: TypeError: t is undefined
+1614941123765	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:235:19
+TimedPromise@chrome://marionette/content/sync.js:220:10
+interaction.flushEventLoop@chrome://marionette/content/interaction.js:418:10
+webdriverClickElement@chrome://marionette/content/interaction.js:179:31
+JavaScript error: http://localhost:46877/static/js/bootstrap.min.js, line 6: TypeError: t is undefined
+JavaScript error: http://localhost:46877/static/js/bootstrap.min.js, line 6: TypeError: t is undefined
+JavaScript error: http://localhost:46877/static/js/bootstrap.min.js, line 6: TypeError: t is undefined
+JavaScript error: http://localhost:46877/static/js/bootstrap.min.js, line 6: TypeError: t is undefined
+1614941136189	Marionette	INFO	Stopped listening on port 43429

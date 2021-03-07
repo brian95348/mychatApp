@@ -65,11 +65,14 @@
     var profile_exists = JSON.parse(document.getElementById('profile_exists').textContent);
     var chats = JSON.parse(document.getElementById('chats').textContent);
     var logged_in_user = JSON.parse(document.getElementById('logged_in_user').textContent);
+   
     
+
+
     if (profile_exists) {
         for (let index = 0; index < chats.length; index++) {
-            
-            var user = chats[index][0];
+            (function(index){
+                var user = chats[index][0];
             var user_id = chats[index][1];
             var chats_messages = chats[index][2];
             var btn_id = 'btn' + user_id+user;
@@ -81,10 +84,10 @@
             var actions_div_id = 'action'+chats[index][1];
 
             var actions_div = document.createElement('div');
-            actions_div.className='actionsdiv';
+            actions_div.className='actionsdiv container';
             actions_div.hidden = true;
             actions_div.setAttribute("id",actions_div_id);
-            document.body.appendChild(actions_div);
+            
             counter = 0;
             var counter_btn;
             
@@ -116,6 +119,7 @@
                 delete_btn.addEventListener("click",function(){
                 selected_divs = document.getElementsByTagName('div');
                 var selected_messages = []
+                var action_divs = document.getElementsByClassName("action");
                 for (let index = 0; index < selected_divs.length; index++) {
                     if (selected_divs[index].value == 1) {
                         selected_messages.push(selected_divs[index].getAttribute('id'))
@@ -124,7 +128,15 @@
                 };
                 document.getElementById(actions_div_id).hidden = true;
                 counter = 0;
-                document.getElementsByClassName('counter')[0].remove();
+                for (let index = 0; index < action_divs.length; index++) {
+                    action_divs[index].style.backgroundColor = 'transparent';
+                    action_divs[index].value = 0;
+                };
+                btns = document.getElementsByClassName('counter');
+                delete btns;
+                for (let index = 0; index < counter_btns.length; index++) {
+                    counter_btns[index].remove();                                       
+                };
                 chatSocket.send(JSON.stringify({
                     'delete':true,
                     'selected_messages': selected_messages,
@@ -178,7 +190,7 @@
             chat_log.style.overflow = "scroll";
             
             document.body.appendChild(chat_log);
-            
+            document.getElementById(chat_log_id).prepend(actions_div);
 
             var msg_input = document.createElement("input");
             msg_input.setAttribute("type","text");
@@ -201,12 +213,10 @@
 
             div.append(chat_header_div,chat_log,p2,p1);
             
-
             for (let index = 0; index < chats_messages.length; index++) {
                 if (logged_in_user == chats_messages[index][1] ||logged_in_user == chats_messages[index][2] ) {
                     if (user == chats_messages[index][1] || user == chats_messages[index][2] ) {
-                        
-            (function(index){
+                        (function(index){
                         var outer_div = document.createElement('div');
                         var _div = document.createElement('div');
                         var _div_id = chats_messages[index][4];
@@ -246,9 +256,8 @@
                                     counter_btn.innerText = counter.toString();
                                     document.getElementById(actions_div_id).prepend(counter_btn);
                                 };
-                                   
                             }
-                                )})(index);
+                        )})(index);
                         if (logged_in_user == chats_messages[index][1]) {
                             _div.className = "action d-flex justify-content-end ";
                         } else{
@@ -286,6 +295,8 @@
             td.appendChild(tdiv);
             tr.appendChild(td);
             document.getElementsByTagName('tbody')[0].appendChild(tr)
+            })(index);
+
         };
     };
     if (chats.length > 0) {
@@ -317,15 +328,8 @@
                 }));
                 messageInputDom.value = '';
                 };
-            chatSocket.onopen = function(e){
-                    chatSocket.send(JSON.stringify({
-                    'connected':logged_in_user
-                }));
-            };
             chatSocket.onmessage = function(e) {
                 const data = JSON.parse(e.data);
-                var connected_user = data.connected_user;
-                var disconnected_user = data.disconnected_user;
                 var messages_delete = data.message_delete;
                 if (messages_delete) {
                     if (data.receiver == logged_in_user){
@@ -347,11 +351,7 @@
                     var h6 = document.createElement('h6');
                     h6.style.border = 'thin solid black';
                     h6.style.borderRadius = '8px';
-                    if (data.sender != user) {
-                        _div.className = "d-flex justify-content-end";
-                    } else{
-                        _div.className = "d-flex justify-content-start";
-                    };                       
+                    _div.className = "d-flex justify-content-end";
                     h6.innerText = data.message+ '\n' + data.timestamp;;
                     outer_div.appendChild(h6);
                     document.getElementById(data.receiver_log).appendChild(_div);
@@ -362,11 +362,7 @@
                         var h6 = document.createElement('h6');
                         h6.style.border = 'thin solid black';
                         h6.style.borderRadius = '8px';
-                        if (data.sender == user) {
-                            _div.className = "d-flex justify-content-start";
-                        } else{
-                            _div.className = "d-flex justify-content-end";
-                        };                       
+                        _div.className = "d-flex justify-content-start";                                               
                         h6.innerText = data.message+ '\n' + data.timestamp;;
                         outer_div.appendChild(h6);
                         document.getElementById(data.recv_user_log).appendChild(_div);

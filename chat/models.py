@@ -12,7 +12,7 @@ def uploadedfile_path(instance, filename):
     return 'profiles/{}_{}/{}'.format(instance.user.username,instance.user.id,filename)
 
 class MyUserManager(UserManager):
-    def create_user(self, username, email, password,superuser=False,**kwargs):
+    def create_user(self, username, email, password,superuser=False,staff=False,**kwargs):
         if not email or not password:
             raise ValueError('Users must have an email and a password')
         user_obj = self.model(email=self.normalize_email(email))
@@ -20,11 +20,12 @@ class MyUserManager(UserManager):
         user_obj.set_password(password)
         user_obj.is_active = True
         user_obj.is_superuser = superuser
+        user_obj.is_staff = staff
         user_obj.save(using=self._db)
         return user_obj
 
     def create_superuser(self,username, email, password,**kwargs):
-        user = self.create_user(username, email,password, superuser=True,**kwargs)
+        user = self.create_user(username, email,password, superuser=True,staff=True,**kwargs)
         return user
 
 class MyUser(AbstractUser):
