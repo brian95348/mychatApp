@@ -1,5 +1,6 @@
 django
 django-guardian
+channels
 channels_redis
 psycopg2
 pillow
